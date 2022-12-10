@@ -1,0 +1,1126 @@
+{
+	"info": {
+		"_postman_id": "c393df5a-01e1-4c26-82dc-55ebec65c4ff",
+		"name": "TrelloCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24423622"
+	},
+	"item": [
+		{
+			"name": "CreateBoard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/boards/?key={{keyTrello}}&name=TrelloApiPostmanCreateBoard&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "name",
+							"value": "TrelloApiPostmanCreateBoard"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-post](https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-post)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get A Board Trello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/boards/:id?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "SM6OIipM"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-get](https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a board",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/boards/:id?key={{keyTrello}}&token={{tokenTrello}}&name=Changed by Postman",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						},
+						{
+							"key": "name",
+							"value": "Changed by Postman"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "nWZXCVEd"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-put](https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-put)"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete A board ",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/boards/:id?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "fPo8yoG2"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-delete](https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-delete)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get checklists from a card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check list count\",()=>{\r",
+							"    var cnt=0;\r",
+							"    var ind=0;\r",
+							"    console.log(pm.response.json().count());\r",
+							"    while(ind < pm.response.json().count())\r",
+							"    {\r",
+							"        console.log(pm.response.json()[ind]);\r",
+							"        ind++;\r",
+							"    }\r",
+							"    while(cnt<pm.response.json()[0][\"checkItems\"].count())\r",
+							"    {\r",
+							"        console.log(pm.response.json()[0][\"checkItems\"][cnt][\"name\"]);\r",
+							"        cnt++;\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id/checklists?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id",
+						"checklists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "RdjkjutW"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-checklists-get](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-checklists-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Creating a checklist item in a card",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id/checklists?name=I created this check list item from postman second try&key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id",
+						"checklists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "I created this check list item from postman second try"
+						},
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "RdjkjutW"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-checklists-post](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-checklists-post)"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a card",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "BwngVTAk"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-delete](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-delete)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all lists in a board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/boards/:id/lists?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						":id",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Card created using postman",
+							"disabled": true
+						},
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "SM6OIipM"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-lists-get](https://developer.atlassian.com/cloud/trello/rest/api-group-boards/#api-boards-id-lists-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a list from the board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/lists/:id?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636c203e0e485201e48887a3"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-lists/#api-lists-id-get](https://developer.atlassian.com/cloud/trello/rest/api-group-lists/#api-lists-id-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all cards on a list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Cards on a list\",()=>{\r",
+							"    var cnt=0;\r",
+							"    while(cnt<pm.response.json().count())\r",
+							"   {\r",
+							"       console.log(pm.response.json()[cnt][\"name\"]);\r",
+							"       console.log(pm.response.json()[cnt][\"id\"]);\r",
+							"       cnt++;\r",
+							"   } \r",
+							"}\r",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/lists/:id/cards?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"lists",
+						":id",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636c203e0e485201e48887a2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get description of a card(using get a card API but getting a value of description from the postman response attribute using json)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Getting description of a card\",()=>{\r",
+							"    console.log(pm.response.json()[\"desc\"]);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "RdjkjutW"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-get](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get checklist items from a checklist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Checklist items from a check list\",()=>{\r",
+							"    var cnt=0;\r",
+							"\r",
+							"    while(cnt<pm.response.json().count())\r",
+							"    {\r",
+							"        if(pm.response.json()[cnt][\"state\"]==\"checked\")\r",
+							"        {\r",
+							"            console.log(pm.response.json()[cnt]);\r",
+							"        }\r",
+							"        \r",
+							"        cnt++;\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id/checkitems?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id",
+						"checkitems"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636c20d892257900b49ed01b"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-get](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all attachments from a card",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id/attachments?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id",
+						"attachments"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "RdjkjutW"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-get](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a particulat attachment on a card by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id/attachments/638f93e0f0662500adb673b7?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id",
+						"attachments",
+						"638f93e0f0662500adb673b7"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "RdjkjutW"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-idattachment-get](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-idattachment-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an attachment from a card by attachment id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id/attachments/63919b87f1f7a800b832ade9?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id",
+						"attachments",
+						"63919b87f1f7a800b832ade9"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "RdjkjutW"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-idattachment-delete](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-idattachment-delete)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a checklist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						},
+						{
+							"key": ":state",
+							"value": "complete",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636c20d892257900b49ed01b"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-get](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Create an attachment in a card",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"test execution schedule\",\r\n    \"url\" : \"C:\\\\Users\\\\raj4s\\\\Desktop\\\\TestExecutionSchedule.xlsx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id/attachments?url=C:\\Users\\raj4s\\Desktop\\TestExecutionSchedule.xlsx&key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id",
+						"attachments"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "C:\\Users\\raj4s\\Desktop\\TestExecutionSchedule.xlsx"
+						},
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "RdjkjutW"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-post](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-post)"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a checklist on a card",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id?name=This checklist has been updated by postman&key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "This checklist has been updated by postman"
+						},
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "638eadf93bc4d800c749947e"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-put](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-put)"
+			},
+			"response": []
+		},
+		{
+			"name": "Creating a new checkitem in a checklist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id/checkitems?name=This check item has been created using postman part 2&key={{keyTrello}}&token={{tokenTrello}}&checked=true",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id",
+						"checkitems"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "This check item has been created using postman part 2"
+						},
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						},
+						{
+							"key": "checked",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-post](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-post)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get checklist items from a checklist sort by state is complete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Checklist items from a check list\",()=>{\r",
+							"    var cnt=0;\r",
+							"\r",
+							"    while(cnt<pm.response.json().count())\r",
+							"    {\r",
+							"        if(pm.response.json()[cnt][\"state\"]==\"complete\")\r",
+							"        {\r",
+							"            console.log(pm.response.json()[cnt]);\r",
+							"        }\r",
+							"        //console.log(pm.response.json()[cnt]);\r",
+							"        cnt++;\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id/checkitems?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id",
+						"checkitems"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636c20d892257900b49ed01b"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-get](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get checklist items from a checklist sort by state is incomplete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Checklist items from a check list\",()=>{\r",
+							"    var cnt=0;\r",
+							"\r",
+							"    while(cnt<pm.response.json().count())\r",
+							"    {\r",
+							"        if(pm.response.json()[cnt][\"state\"]==\"incomplete\")\r",
+							"        {\r",
+							"            console.log(pm.response.json()[cnt]);\r",
+							"        }\r",
+							"        //console.log(pm.response.json()[cnt]);\r",
+							"        cnt++;\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id/checkitems?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id",
+						"checkitems"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636c20d892257900b49ed01b"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-get](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-checkitems-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all completed checkitems in a card using checkitemstatus json attribute",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Display all completed item id's\",()=>\r",
+							"{\r",
+							"    var cnt=0;\r",
+							"    console.log(\"The id's for completed checkitems in the card are\");\r",
+							"    while ( cnt<pm.response.json()[\"checkItemStates\"].count())\r",
+							"    {\r",
+							"        //console.log(pm.response.json()[\"checkItemStates\"]);\r",
+							"        console.log(pm.response.json()[\"checkItemStates\"][cnt][\"idCheckItem\"]);\r",
+							"        cnt++;\r",
+							"    }\r",
+							"    console.log(pm.request);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/cards/:id?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"cards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "0dG7Bd09"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-get](https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a field value from a specified checklist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id/:field?key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id",
+						":field"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "636c20d892257900b49ed01b"
+						},
+						{
+							"key": "field",
+							"value": "name"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-field-get](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-field-get)"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a checklist using update field API request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/1/checklists/:id/:field?value=updated using update field API call&key={{keyTrello}}&token={{tokenTrello}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"1",
+						"checklists",
+						":id",
+						":field"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "updated using update field API call"
+						},
+						{
+							"key": "key",
+							"value": "{{keyTrello}}"
+						},
+						{
+							"key": "token",
+							"value": "{{tokenTrello}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "638eadf93bc4d800c749947e"
+						},
+						{
+							"key": "field",
+							"value": "name"
+						}
+					]
+				},
+				"description": "[https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-field-put](https://developer.atlassian.com/cloud/trello/rest/api-group-checklists/#api-checklists-id-field-put)"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": ""
+		}
+	]
+}
